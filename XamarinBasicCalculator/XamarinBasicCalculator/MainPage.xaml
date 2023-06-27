@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:XamarinBasicCalculator"
+             x:Class="XamarinBasicCalculator.MainPage"
+             x:DataType="local:MainPageViewModel">
+
+    <!--<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>-->
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Color x:Key="BlackRussian">#24252a</Color>
+        <ResourceDictionary>
+            <Style x:Key ="infostyle" TargetType="Button">
+                <Setter Property="WidthRequest" Value="60" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BorderRadius" Value="30"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="36"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="2*,*,*,*,*,*" ColumnDefinitions="*,*,*,*" Padding="5,0" RowSpacing="5" ColumnSpacing="5" >
+        <!--TODO: label stack x y-->
+        <Label FontSize="48" Padding="24" FontAttributes="Bold" BackgroundColor="{StaticResource BlackRussian}" 
+               Text="{Binding Entry}" TextColor="White" HorizontalTextAlignment="End" VerticalTextAlignment="Center" LineBreakMode="NoWrap" Grid.ColumnSpan="4" />
+
+        <Button Text="AC" Grid.Row="1" Grid.Column="0" BackgroundColor="#808080"
+                Command="{Binding ClearCommand}" Style="{StaticResource infostyle}"  />
+        <Button Text="&#x232b;" Grid.Row="1" Grid.Column="1" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding BackspaceCommand}"/>
+        <Button Text="%" Grid.Row="1" Grid.Column="2" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding PercentageCommand}"/>
+
+        <Button Text="7" Grid.Row="2" Grid.Column="0" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="7"/>
+        <Button Text="8" Grid.Row="2" Grid.Column="1" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="8"/>
+        <Button Text="9" Grid.Row="2" Grid.Column="2" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="9"/>
+        <Button Text="4" Grid.Row="3" Grid.Column="0" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="4"/>
+        <Button Text="5" Grid.Row="3" Grid.Column="1" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="5"/>
+        <Button Text="6" Grid.Row="3" Grid.Column="2" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="6"/>
+        <Button Text="1" Grid.Row="4" Grid.Column="0" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="1"/>
+        <Button Text="2" Grid.Row="4" Grid.Column="1" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="2"/>
+        <Button Text="3" Grid.Row="4" Grid.Column="2" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="3"/>
+        <Button Text="0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="0"/>
+        <Button Text="&#x00B7;" Grid.Row="5" Grid.Column="2" BackgroundColor="#2e2e2e" Style="{StaticResource infostyle}"
+                Command="{Binding DigitNumberCommand}" CommandParameter="."/>
+
+        <Button Text="=" Grid.Row="5" Grid.Column="3" BackgroundColor="DarkRed" Style="{StaticResource infostyle}"
+                Command="{Binding ResultCommand}"/>
+
+        <Button Text="÷" Grid.Row="1" Grid.Column="3" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding BinaryOperation}" CommandParameter="divide"/>
+        <Button Text="&#x00D7;" Grid.Row="2" Grid.Column="3" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding BinaryOperation}" CommandParameter="multiply"/>
+        <Button Text="&#x2013;" Grid.Row="3" Grid.Column="3" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding BinaryOperation}" CommandParameter="subtract"/>
+        <Button Text="+" Grid.Row="4" Grid.Column="3" BackgroundColor="#808080" Style="{StaticResource infostyle}"
+                Command="{Binding BinaryOperation}" CommandParameter="add"/>
+    </Grid>
+
+</ContentPage>
